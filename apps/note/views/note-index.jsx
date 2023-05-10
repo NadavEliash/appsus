@@ -27,34 +27,31 @@ export function NoteIndex() {
         })
     }
 
+    function handleChange({ target }) {
+        const field = target.name
+        const value = target.value
+        setNoteToEdit(prevNote => (
+            { ...prevNote, info: { ...prevNote.info, [field]: value } }))
+    }
+
     function onSaveNote(ev) {
         ev.preventDefault()
         noteService.save(noteToEdit)
             .then(() => {
-               console.log(notes)
+                loadNotes()
+
             })
-
     }
 
-    function handleChange({ target }) {
-        const field = target.name
-        console.log(field)
-        const value = target.value
-        console.log(value);
-        setNoteToEdit(prevNote => (
-            { ...prevNote, info: { ...prevNote.info, [field]: value } }))
-
-    }
     const { info: { title, txt } } = noteToEdit
-    console.log(noteToEdit)
     return (
         <section>
-            <form onSubmit={onSaveNote} >
+            <form onSubmit={onSaveNote}>
                 <label htmlFor="title">Title:</label>
-                <input required onChange={handleChange} value={title} type="text" name="title" id="title" />
+                <input required onChange={handleChange} value={title} type="text" name="title" id="title" placeholder="Title:"/>
 
                 <label htmlFor="txt">Text here:</label>
-                <input required onChange={handleChange} value={txt} type="text" name="txt" id="txt" />
+                <input required onChange={handleChange} value={txt} type="text" name="txt" id="txt" placeholder="Text here:"/>
 
                 <button>Add Note</button>
             </form>

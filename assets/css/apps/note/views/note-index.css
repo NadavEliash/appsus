@@ -1,1 +1,6 @@
  /* note index */
+
+ form{
+    display: flex;
+   justify-content: center;
+ }

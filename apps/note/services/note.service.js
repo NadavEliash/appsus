@@ -46,8 +46,8 @@ function getEmptyNote() {
       backgroundColor: '#00d'
     },
     info: {
-      title: 'Title',
-      txt: 'Text here'
+      title: '',
+      txt: ''
     }
   }
 }

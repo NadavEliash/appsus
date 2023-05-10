@@ -1,9 +1,13 @@
+// import { NoteEdit } from './note-edit.jsx'
+
 export function NotePreview({ note }) {
+
+
+
     return (
         <article className="note-preview">
-            <h2>Title: {note.info.title} </h2>
-            <h4>{note.info.txt}</h4>
-
+            <h2>{note.info.title} </h2>
+            <p>{note.info.txt}</p>
         </article>
     )
 }
