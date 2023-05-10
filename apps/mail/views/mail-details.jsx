@@ -3,7 +3,7 @@ const { useParams, useNavigate, Link } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailPreview() {
+export function MailDetails() {
     const [mail, setMail] = useState(null)
     const { mailId } = useParams()
     const navigate = useNavigate()
@@ -28,7 +28,7 @@ export function MailPreview() {
     if (!mail) return <div>Loading...</div>
     return (
         <section className="mail-preview">
-            <h1>{mail.title}</h1>
+            <h1>{mail.subject}</h1>
             <p>{mail.msg}</p>
             <button onClick={onBack}>Back</button>
         </section>

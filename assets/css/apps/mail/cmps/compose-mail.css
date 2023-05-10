@@ -1,0 +1,17 @@
+.new-massage {
+    position: absolute;
+    right: 2em;
+    bottom: 0;
+    padding: 0.2em;
+    background-color: rgb(255, 236, 239);
+    width: 40em;
+    height: 40em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.new-massage-form {
+    display: flex;
+    flex-direction: column;
+}
