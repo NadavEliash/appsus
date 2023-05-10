@@ -1,10 +1,13 @@
-.main-mail {
+.mail-main-layout {
     display: flex;
     flex-direction: row;
-    width: 97%;
+    margin: auto;
+    font-family: Arial;
+    font-size: 0.8rem;
+    font-weight: lighter;
 }
 
 
-.filter-list-mail {
-    flex: 1;
+.main-mail {
+    width: 90%;
 }

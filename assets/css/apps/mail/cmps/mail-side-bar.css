@@ -1,0 +1,14 @@
+.side-bar {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-ul {
+    padding: 0;
+}
+
+.side-ul li {
+    list-style-type: none;
+    padding: 1em;
+    cursor: pointer;
+}
