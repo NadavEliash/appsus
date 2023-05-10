@@ -1,1 +1,10 @@
- /* mail index  */
+.main-mail {
+    display: flex;
+    flex-direction: row;
+    width: 97%;
+}
+
+
+.filter-list-mail {
+    flex: 1;
+}
