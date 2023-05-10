@@ -1,1 +1,8 @@
- /* mail list */
+.mail-list {
+    display: flex;
+    flex-direction: column;
+}
+
+ul.mail-list {
+    width: 100%;
+}
