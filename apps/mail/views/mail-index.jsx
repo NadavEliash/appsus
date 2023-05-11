@@ -22,8 +22,13 @@ export function MailIndex() {
         setSearchParams(filterBy)
     }, [filterBy])
 
+
     function loadMails() {
         mailService.query(filterBy).then(setMails)
+    }
+
+    function onSetFilter(filterBy) {
+        setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
     }
 
     function onRemoveMail(mailId) {
@@ -35,23 +40,38 @@ export function MailIndex() {
         setIsCompose(false)
     }
 
-    function onSetFilter(filterBy) {
-        setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
+    function onSendMail(mail) {
+        mailService.save(mail)
+        setIsCompose(false)
+        setFilterBy(filterBy)
     }
 
-    function onSendMail(mailId) {
-        // onRemoveMail={onRemoveMail} onSendMail={onSendMail} mailId={utilService.makeId()}
+    function onStarred(mail) {
+        mail.isStarred = !mail.isStarred
+        mailService.save(mail).then()
+        setFilterBy(filterBy)
+    }
+    
+    function onLabeled(mail) {
+        mail.isImportant = !mail.isImportant
+        mailService.save(mail).then()
+        setFilterBy(filterBy)
     }
 
+
+    function onSideBarFilter(field) {
+        let filteredMails = mails.filter(mail => mail[field] === true || mail[field] === 'myEMail')
+        // setMails(filteredMails)
+    }
 
 
     return (
         <main className="mail-main-layout">
-            <MailSideBar setIsCompose={setIsCompose} />
+            <MailSideBar setIsCompose={setIsCompose} onSideBarFilter={onSideBarFilter} />
             <section className="main-mail">
                 <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-                <MailList mails={mails} onRemoveMail={onRemoveMail} />
-                {isCompose && <ComposeMail />}
+                <MailList mails={mails} onRemoveMail={onRemoveMail} onStarred={onStarred} onLabeled={onLabeled} />
+                {isCompose && <ComposeMail onRemoveMail={onRemoveMail} onSendMail={onSendMail} mailId={utilService.makeId()} />}
             </section>
         </main>)
 }

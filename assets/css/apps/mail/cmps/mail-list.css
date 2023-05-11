@@ -4,6 +4,60 @@
 }
 
 ul.mail-list {
+    padding: 0.5em;
     width: 100%;
     height: 100%;
+}
+
+.mail-list button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.mail-list .delete-button {
+    position: absolute;
+    right: 5em;
+    opacity: 0;
+}
+
+.mail-list img {
+    width: 1.5em;
+}
+
+.mail-row:hover .delete-button {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.star-button .empty-star {
+    width: 1.5em;
+}
+
+.star-button .yellow-star {
+    width: 0;
+}
+
+.star-button:hover .empty-star {
+    width: 0;
+}
+
+.star-button:hover .yellow-star {
+    width: 1.2em;
+}
+
+.label-button .empty-label {
+    width: 1.5em;
+}
+
+.label-button .yellow-label {
+    width: 0;
+}
+
+.label-button:hover .empty-label {
+    width: 0;
+}
+
+.label-button:hover .yellow-label {
+    width: 1.3em;
 }

@@ -4,8 +4,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 0.1px solid rgb(126, 126, 126);
+    box-shadow: -1px 0px 5px 0.1px rgba(145, 145, 145, 0.2);
     width: 100%;
+    padding-inline: 0.5em;
 }
 
 .mail-row:hover {
@@ -13,12 +14,16 @@
     box-shadow: 0px 2px 20px 0.5px rgba(145, 145, 145, 0.3);
 }
 
+.mail-row:hover .date {
+    opacity: 0;
+}
+
 .mail-title {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 98%;
 }
 
 .mail-title .from {
