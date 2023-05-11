@@ -10,15 +10,25 @@ export const noteService = {
   get,
   remove,
   save,
-  getEmptyNote
+  getEmptyNote,
+  getDefaultFilter,
 }
 
 
-function query() {
+function query(filterBy = {}) {
   return storageService.query(NOTE_KEY)
-    .then(notes => {
-      return notes
-    })
+  .then(notes => {
+    if (filterBy.info.txt) {
+        const regExp = new RegExp(filterBy.info.txt, 'i')
+        notes = notes.filter(note => regExp.test(note.info.txt) || regExp.test(note.info.title))
+    }
+
+    if (filterBy.info.title) {
+      const regExp = new RegExp(filterBy.info.title, 'i')
+      notes = notes.filter(note => regExp.test(note.info.title))
+    }
+    return notes
+})
 }
 
 function get(noteID) {
@@ -35,6 +45,13 @@ function save(note) {
   } else {
     return storageService.post(NOTE_KEY, note)
   }
+}
+
+function getDefaultFilter() {
+  return { info: {
+    title: '',
+    txt: ''
+  } }
 }
 
 function getEmptyNote() {
@@ -58,7 +75,6 @@ function _createNotes() {
     notes = [
       {
         id: 'n101',
-        // createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
         info: {
@@ -94,7 +110,104 @@ function _createNotes() {
         style: {
           backgroundColor: '#00d'
         }
+      },
+      {
+        id: 'n104',
+        type: 'NoteTxt',
+        isPinned: true,
+        info: {
+          title: 'To Remember',
+          txt: 'First of all - I am the best!'
+        },
+        style: {
+          backgroundColor: '#00d'
+        }
+      },
+      {
+        id: 'n105',
+        type: 'NoteTxt',
+        isPinned: true,
+        info: {
+          title: 'First try',
+          txt: 'Fullstack Me Baby!'
+        },
+        style: {
+          backgroundColor: '#00d'
+        }
+      },
+      {
+        id: 'n106',
+        type: 'NoteTxt',
+        isPinned: true,
+        info: {
+          title: 'My goal is:',
+          txt: 'To finish NOTE APP!'
+        },
+        style: {
+          backgroundColor: '#00d'
+        }
+      },
+      {
+        id: 'n107',
+        type: 'NoteTxt',
+        isPinned: true,
+        info: {
+          title: 'Someday',
+          txt: 'Someday they will remember me!!'
+        },
+        style: {
+          backgroundColor: '#00d'
+        }
+      },
+      {
+        id: 'n108',
+        type: 'NoteTxt',
+        isPinned: true,
+        info: {
+          title: 'In case of fire',
+          txt: 'Hello! How are you doing'
+        },
+        style: {
+          backgroundColor: '#00d'
+        }
+      },
+      {
+        id: 'n109',
+        type: 'NoteTxt',
+        isPinned: true,
+        info: {
+          title: 'Note Note',
+          txt: 'I just finished to watch Game of Thrones'
+        },
+        style: {
+          backgroundColor: '#00d'
+        }
+      },
+      {
+        id: 'n110',
+        type: 'NoteTxt',
+        isPinned: true,
+        info: {
+          title: 'Give a chance',
+          txt: 'I need to give a chance to myself!'
+        },
+        style: {
+          backgroundColor: '#00d'
+        }
+      },
+      {
+        id: 'n111',
+        type: 'NoteTxt',
+        isPinned: true,
+        info: {
+          title: 'Last try',
+          txt: 'Lets see how it works'
+        },
+        style: {
+          backgroundColor: '#00d'
+        }
       }
+
     ]
     utilService.saveToStorage(NOTE_KEY, notes)
   }

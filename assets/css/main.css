@@ -31,6 +31,8 @@
 @import './apps/mail/cmps/compose-mail.css';
 
 /* note app Cmps */
+@import '../css/apps/note/views/note-index.css';
 @import '../../assets/css/apps/note/cmps/note-list.css';
 @import '../css/apps/note/cmps/note-preview.css';
-@import '../css/apps/note/cmps/note-edit.css'
+@import '../css/apps/note/cmps/note-edit.css';
+@import '../css/apps/note/cmps/note-filter.css'
