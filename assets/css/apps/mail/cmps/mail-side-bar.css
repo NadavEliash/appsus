@@ -11,6 +11,10 @@
     padding: 0;
 }
 
+.side-ul li{
+    background-color: transparent;
+}
+
 .side-ul li:first-child {
     display: inline-block;
     background-color: rgb(218, 227, 231);
