@@ -2,6 +2,8 @@ const { useEffect, useState } = React
 const { useParams, useNavigate } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
+import { MailFilter } from "../cmps/mail-filter.jsx"
+import { MailSideBar } from "../cmps/mail-side-bar.jsx"
 
 export function MailDetails() {
     const [mail, setMail] = useState(null)
@@ -31,15 +33,21 @@ export function MailDetails() {
 
     if (!mail) return <div>Loading...</div>
     return (
-        <section className="mail-details">
-            <header>
-            <button onClick={onBack}>←</button>
-            <button onClick={onRemoveMail}>delete</button>
-            </header>
-            <h2>{mail.subject}</h2>
-            <h3>{mail.from}</h3>
-            <p>{mail.massage}</p>
-            <button><span className="reply-arrow">↪</span>Reply</button>            
-        </section>
+        <main>
+            <section className="mail-details">
+                <header className="mail-details-header">
+                    <button onClick={onBack}>
+                    <img src="../../../assets/img/back.svg" alt="" />
+                    </button>
+                    <button onClick={onRemoveMail}>
+                    <img src="../../../assets/img/delete.svg" alt="" />
+                    </button>
+                </header>
+                <h2>{mail.subject}</h2>
+                <h3>{mail.from}</h3>
+                <p>{mail.massage}</p>
+                {/* <button className="reply-btn"><span className="reply-arrow">↪</span>Reply</button> */}
+            </section>
+        </main>
     )
 }

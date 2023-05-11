@@ -1,22 +1,26 @@
 .mail-row {
-    background-color: var(--clr3);
+    background-color: rgb(250, 250, 250);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    box-shadow: -1px 0px 5px 0.1px rgba(145, 145, 145, 0.2);
+    box-shadow: -1px 0px 3px 0.1px rgba(145, 145, 145, 0.2);
     width: 100%;
     padding-inline: 0.5em;
 }
 
 .mail-row.true {
-    background-color: rgb(233, 233, 233);
+    background-color: var(--clr3);
 }
 
 .mail-row:hover {
-    background-color: var(--clr2);
+    background-color: var(--clr4);
     scale: 1 1.001;
     box-shadow: 0px 2px 20px 0.5px rgba(145, 145, 145, 0.3);
+}
+
+.mail-row.true:hover {
+    background-color: var(--clr2);
 }
 
 .mail-row:hover .date {
