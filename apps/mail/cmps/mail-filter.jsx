@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-export function MailFilter({ filterBy, onSetFilter }) {
+export function MailFilter({ filterBy, onSetFilter, onSetSortBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
     useEffect(() => {
@@ -8,7 +8,6 @@ export function MailFilter({ filterBy, onSetFilter }) {
     }, [filterByToEdit])
 
     function handleChange({ target }) {
-        console.log(target)
         const field = target.name
         const value = target.value
         setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, [field]: value }))
@@ -32,6 +31,8 @@ export function MailFilter({ filterBy, onSetFilter }) {
                 <input value={txt} onChange={handleChange} name="txt" id="txt" type="text" placeholder="search emails" />
                 <button onClick={cancelSearch}><img src="../../../assets/img/X.svg" alt="" /></button>
             </form>
+            <button onClick={() => onSetSortBy('date')}>by Date</button>
+            <button onClick={() => onSetSortBy('subject')}>by Subject</button>
         </section>
     )
 }
