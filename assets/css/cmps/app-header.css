@@ -1,5 +1,5 @@
 header {
-    background: lightcyan;
+    background: var(--clr3);
     border-bottom: 2px solid white;
 }
 
