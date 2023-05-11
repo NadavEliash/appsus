@@ -1,12 +1,14 @@
 .mail-list {
     display: flex;
     flex-direction: column;
+    
 }
 
 ul.mail-list {
     padding: 0.5em;
-    width: 100%;
+    width: 98%;
     height: 100%;
+    
 }
 
 .mail-list button {
@@ -15,9 +17,9 @@ ul.mail-list {
     cursor: pointer;
 }
 
-/* .mail-list li, .mail-list a {
-    background-color: rgb(226, 226, 226);
-} */
+.mail-list li, .mail-list a {
+    min-width: 0;
+}
 
 .mail-list .delete-button {
     position: absolute;
