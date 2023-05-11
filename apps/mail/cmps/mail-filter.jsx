@@ -28,9 +28,9 @@ export function MailFilter({ filterBy, onSetFilter }) {
         <section className="mail-filter full main-layout">
             <form className="search-box" onSubmit={onSubmitFilter}>
                 <label htmlFor="txt"></label>
-                <img src="../../assets/img/magnifying-glass.svg" alt="" />
+                <img src="assets/img/magnifying-glass.svg" alt="" />
                 <input value={txt} onChange={handleChange} name="txt" id="txt" type="text" placeholder="search emails" />
-                <button onClick={cancelSearch}><img src="../../assets/img/X.svg" alt="" /></button>
+                <button onClick={cancelSearch}><img src="assets/img/X.svg" alt="" /></button>
             </form>
         </section>
     )
