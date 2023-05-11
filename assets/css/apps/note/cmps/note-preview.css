@@ -1,3 +1,16 @@
-h3{
+h3 {
     text-align: center;
+}
+
+
+.edit-buttons button {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.edit-buttons button:hover {
+    background-color: #e7e7e7;
+    cursor: pointer;
 }

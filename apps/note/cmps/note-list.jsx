@@ -1,7 +1,7 @@
 
 import { NotePreview } from "./note-preview.jsx"
 
-export function NoteList({ notes, onRemoveNote }) {
+export function NoteList({ notes, onRemoveNote, loadNotes }) {
 
 
 
@@ -10,11 +10,7 @@ export function NoteList({ notes, onRemoveNote }) {
         <ul className="note-list">
             {notes.map(note =>
                 <li key={note.id}>
-                    <NotePreview note={note} />
-                    <section className="edit-buttons">
-                        {/* Buttons */}
-                        <button onClick={() => onRemoveNote(note.id)}>Remove Note</button>
-                    </section>
+                    <NotePreview note={note} onRemoveNote={onRemoveNote} loadNotes={loadNotes} />
                 </li>
             )}
         </ul>

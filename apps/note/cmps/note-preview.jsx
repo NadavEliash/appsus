@@ -2,12 +2,13 @@ const { useEffect, useState } = React
 
 import { NoteEdit } from './note-edit.jsx'
 
-export function NotePreview({ note }) {
+export function NotePreview({ note, onRemoveNote, loadNotes}) {
 
     const [isEditable, setIsEditable] = useState(false)
 
     function onEditable(){
-        setIsEditable(true)
+        if (!isEditable) setIsEditable(true)
+        else setIsEditable(false)
     }
 
     
@@ -17,8 +18,11 @@ export function NotePreview({ note }) {
         <article className="note-preview">
             <h3>{note.info.title} </h3>
             <p>{note.info.txt}</p>
-            <button onClick={onEditable}>Edit</button>
-            {isEditable && <NoteEdit  note={note}  />}
+            <div className="edit-buttons">
+            <button onClick={onEditable}>✏️</button>
+            <button onClick={() => onRemoveNote(note.id)}>🗑</button>
+            </div>
+            {isEditable && <NoteEdit  note={note} onEditable={onEditable} loadNotes={loadNotes} />}
             
         </article>
     )
