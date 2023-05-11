@@ -15,6 +15,10 @@ ul.mail-list {
     cursor: pointer;
 }
 
+/* .mail-list li, .mail-list a {
+    background-color: rgb(226, 226, 226);
+} */
+
 .mail-list .delete-button {
     position: absolute;
     right: 5em;
@@ -30,34 +34,34 @@ ul.mail-list {
     cursor: pointer;
 }
 
-.star-button .empty-star {
+.star-button .empty-star.false {
     width: 1.5em;
 }
 
-.star-button .yellow-star {
+.star-button .empty-star.true {
     width: 0;
 }
 
-.star-button:hover .empty-star {
+.star-button .yellow-star.false {
     width: 0;
 }
 
-.star-button:hover .yellow-star {
+.star-button .yellow-star.true{
     width: 1.2em;
 }
 
-.label-button .empty-label {
+.label-button .empty-label.false {
     width: 1.5em;
 }
 
-.label-button .yellow-label {
+.label-button .empty-label.true {
     width: 0;
 }
 
-.label-button:hover .empty-label {
+.label-button .yellow-label.false {
     width: 0;
 }
 
-.label-button:hover .yellow-label {
-    width: 1.3em;
+.label-button .yellow-label.true{
+    width: 1.2em;
 }

@@ -41,9 +41,14 @@ export function MailIndex() {
     }
 
     function onSendMail(mail) {
-        mailService.save(mail)
+        mailService.save(mail).then(() => {
+            loadMails()
+            setIsCompose(false)
+        })
+    }
+
+    function onCloseCompose() {
         setIsCompose(false)
-        setFilterBy(filterBy)
     }
 
     function onStarred(mail) {
@@ -51,7 +56,7 @@ export function MailIndex() {
         mailService.save(mail).then()
         setFilterBy(filterBy)
     }
-    
+
     function onLabeled(mail) {
         mail.isImportant = !mail.isImportant
         mailService.save(mail).then()
@@ -59,9 +64,8 @@ export function MailIndex() {
     }
 
 
-    function onSideBarFilter(field) {
-        let filteredMails = mails.filter(mail => mail[field] === true || mail[field] === 'myEMail')
-        // setMails(filteredMails)
+    function onSideBarFilter(attribute) {
+        setFilterBy(prevFilterBy => ({ ...prevFilterBy, attribute }))
     }
 
 
@@ -71,7 +75,7 @@ export function MailIndex() {
             <section className="main-mail">
                 <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 <MailList mails={mails} onRemoveMail={onRemoveMail} onStarred={onStarred} onLabeled={onLabeled} />
-                {isCompose && <ComposeMail onRemoveMail={onRemoveMail} onSendMail={onSendMail} mailId={utilService.makeId()} />}
+                {isCompose && <ComposeMail onRemoveMail={onRemoveMail} onSendMail={onSendMail} onCloseCompose={onCloseCompose} />}
             </section>
         </main>)
 }
