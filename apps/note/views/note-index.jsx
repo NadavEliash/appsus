@@ -10,7 +10,7 @@ import { noteService } from "../services/note.service.js"
 export function NoteIndex() {
 
 
-    const [notes, setNotes] = useState([]) 
+    const [notes, setNotes] = useState([])
     // const [isOpenNewNote, setIsOpenNewNote] = useState(false)
     const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
@@ -24,11 +24,7 @@ export function NoteIndex() {
         noteService.query(filterBy).then(setNotes)
     }
 
-    // function onOpenNewNote(){
-    //     if (!isOpenNewNote) setIsOpenNewNote(true)
-    //     // else setIsOpenNewNote(false)
-    // }
-    
+
 
     function onRemoveNote(noteID) {
         noteService.remove(noteID).then(() => {
@@ -53,11 +49,26 @@ export function NoteIndex() {
             })
     }
 
+    function onPin(note) {
+        note.isPinned = !note.isPinned
+        noteService.save(note).then(() => {
+            setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
+        })
+    }
+
+    function onDuplicate(note) {
+        note.id = ''
+        noteService.save(note).then(() => {
+            setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
+        })
+
+
+    }
+
+
     function onSetFilter(filterBy) {
         setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
     }
-
-    // window.onclick = () => setIsOpenNewNote(false)
 
     const { info: { title, txt } } = noteToEdit
     return (
@@ -66,17 +77,17 @@ export function NoteIndex() {
 
             <form className="note-add" onSubmit={onSaveNote}>
                 <label htmlFor="title"></label>
-                <input required onChange={handleChange} value={title} type="text" name="title" id="title" placeholder="Title:"/>
+                <input required onChange={handleChange} value={title} type="text" name="title" id="title" placeholder="Title:" />
 
-                
+
                 <label htmlFor="txt"></label>
-                <input required onChange={handleChange} value={txt} type="text" name="txt" id="txt" placeholder="Text here:"/>
-                
+                <input required onChange={handleChange} value={txt} type="text" name="txt" id="txt" placeholder="Text here:" />
+
                 <button>Add Note</button>
-                
+
             </form>
 
-            <NoteList notes={notes} onRemoveNote={onRemoveNote} loadNotes ={loadNotes} />
+            <NoteList notes={notes} onRemoveNote={onRemoveNote} loadNotes={loadNotes} onPin={onPin} onDuplicate={onDuplicate} />
 
         </section>
     )

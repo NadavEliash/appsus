@@ -14,10 +14,36 @@ export const noteService = {
   getDefaultFilter,
 }
 
+// items.sort((a, b) => {
+//   const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+//   const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+//   if (nameA < nameB) {
+//     return -1;
+//   }
+//   if (nameA > nameB) {
+//     return 1;
+//   }
+
+//   // names must be equal
+//   return 0;
+// });
+
 
 function query(filterBy = {}) {
   return storageService.query(NOTE_KEY)
   .then(notes => {
+      notes.sort((a, b) => {
+        const noteA = a.isPinned
+        const noteB = b.isPinned
+        if (noteA < noteB) {
+          return 1
+        }
+        if (noteA > noteB) {
+          return -1
+        }
+        return 0
+      })
+
     if (filterBy.info.txt) {
         const regExp = new RegExp(filterBy.info.txt, 'i')
         notes = notes.filter(note => regExp.test(note.info.txt) || regExp.test(note.info.title))
@@ -60,7 +86,7 @@ function getEmptyNote() {
     type: 'NoteTxt',
     isPinned: false,
     style: {
-      backgroundColor: '#00d'
+      backgroundColor: '#B4FF9F'
     },
     info: {
       title: '',
@@ -68,6 +94,7 @@ function getEmptyNote() {
     }
   }
 }
+
 
 function _createNotes() {
   let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -82,7 +109,7 @@ function _createNotes() {
           txt: 'Fullstack Me Baby!'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#B4FF9F'
         }
       },
       {
@@ -94,7 +121,7 @@ function _createNotes() {
           title: 'Bobi and Me'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#F9FFA4'
         }
       },
       {
@@ -108,91 +135,91 @@ function _createNotes() {
             { txt: 'Coding power', doneAt: 187111111 }]
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#B4FF9F'
         }
       },
       {
         id: 'n104',
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         info: {
           title: 'To Remember',
-          txt: 'First of all - I am the best!'
+          txt: 'First of all - I am the best!First of all - I am the best!First of all - I am the best!First of all - I am the best!'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#F9FFA4'
         }
       },
       {
         id: 'n105',
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         info: {
           title: 'First try',
           txt: 'Fullstack Me Baby!'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#FFD59E'
         }
       },
       {
         id: 'n106',
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         info: {
           title: 'My goal is:',
           txt: 'To finish NOTE APP!'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#B4FF9F'
         }
       },
       {
         id: 'n107',
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         info: {
           title: 'Someday',
           txt: 'Someday they will remember me!!'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#FFD59E'
         }
       },
       {
         id: 'n108',
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         info: {
           title: 'In case of fire',
           txt: 'Hello! How are you doing'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#FFD59E'
         }
       },
       {
         id: 'n109',
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         info: {
           title: 'Note Note',
           txt: 'I just finished to watch Game of Thrones'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#B4FF9F'
         }
       },
       {
         id: 'n110',
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         info: {
           title: 'Give a chance',
           txt: 'I need to give a chance to myself!'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#FFA1A1'
         }
       },
       {
@@ -204,7 +231,7 @@ function _createNotes() {
           txt: 'Lets see how it works'
         },
         style: {
-          backgroundColor: '#00d'
+          backgroundColor: '#FFA1A1'
         }
       }
 
