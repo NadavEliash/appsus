@@ -4,12 +4,17 @@
     bottom: 0;
     padding: 0.2rem;
     background-color: var(--clr3);
-    width: 40rem;
+    width: 35rem;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+    text-indent: 1rem;
     border-radius: 1rem;
     box-shadow: -1px 2px 10px 5px rgba(145, 145, 145, 0.5);
+}
+
+.new-massage img {
+    height: 2rem;
 }
 
 .new-massage-form {
@@ -22,7 +27,14 @@
     border: 0;
     font-size: 1.5rem;
     padding: 0.5rem;
+    padding-inline: 2rem;
     cursor: pointer;
+}
+
+.new-massage button:hover {
+    background-color: rgba(56, 108, 156, 0.2);
+    border-radius: 2rem;
+    
 }
 
 .new-massage-header {
@@ -30,29 +42,29 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 400;
     padding: 0.3rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .new-massage h4 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 0.3rem;
     font-weight: 400;
 }
 
 .mail-to {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 0.3rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);    
+    border-block: 1px solid rgba(0, 0, 0, 0.1);    
 }
 
 .mail-to input {
     width: 90%;
     background-color: transparent;
     border: 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .new-massage input:focus-visible, textarea:focus-visible {
@@ -62,11 +74,20 @@
 .subject {
     background-color: transparent;
     border: 0;
+    text-indent: 1rem;
     margin-block: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .new-massage textarea {
-    border-radius: 1rem;
-    padding: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-inline: 0.3rem;
+}
+
+.new-massage-footer {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

@@ -3,12 +3,12 @@ const { useEffect, useState } = React
 import { mailService } from "../services/mail.service.js"
 
 export function MailSideBar({ setIsCompose, onSideBarFilter }) {
-    const [unReadCount, setUnReadCount] = useState()
+    const [unReadCount, setUnReadCount] = useState('...')
 
-    useEffect(()=> {
+    useEffect(() => {
         mailService.query()
-        .then(mailService.countUnRead)
-        .then(setUnReadCount)
+            .then(mailService.countUnRead)
+            .then(setUnReadCount)
     }, [])
 
     return (
@@ -20,7 +20,8 @@ export function MailSideBar({ setIsCompose, onSideBarFilter }) {
                 <li onClick={() => onSideBarFilter('isImportant')}>Important</li>
                 <li onClick={() => onSideBarFilter('from')}>Sent</li>
                 <li onClick={() => onSideBarFilter('isDraft')}>Drafts</li>
-                <li>Labels</li>
+                <li onClick={() => onSideBarFilter('isArchived')}>Archive</li>
+                <li onClick={() => onSideBarFilter('isTrash')}>Trash</li>
             </ul>
         </section>
     )

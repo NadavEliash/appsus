@@ -19,6 +19,8 @@
 .mail-details-header {
     display: flex;
     justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(102, 90, 90, 0.3);
 }
 
 .mail-details button {
@@ -37,11 +39,19 @@
     font-size: 2rem;
     padding: 0.3rem;
     margin-block: 1rem;
+    text-indent: 1rem;
 }
 
 .mail-details h3 {
     font-size: 1.5rem;
     padding: 0.3rem;
+    text-align: start;
+    text-indent: 1rem;
+}
+
+.mail-details p {
+    font-size: 1.2rem;
+    margin-inline: 1rem;
 }
 
 span.reply-arrow  {
@@ -63,3 +73,21 @@ span.reply-arrow  {
     margin-top: auto;
 }
 
+.browsing-mails {
+    position: absolute;
+    background-color: transparent;
+    border: 0;
+    top: 45%;
+    right: 15%;
+    cursor: pointer;
+}
+
+.browsing-mails:first-child {
+    right: auto;
+    left: 15%;
+}
+
+.browsing-mails img {
+    width: 100%;
+    height: 6rem;
+}

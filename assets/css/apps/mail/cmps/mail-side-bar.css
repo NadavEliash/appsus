@@ -13,6 +13,8 @@
 
 .side-ul li{
     background-color: transparent;
+    box-shadow: none;
+    border: none;
 }
 
 .side-ul li:first-child {
@@ -36,5 +38,5 @@
 }
 
 .side-ul li:hover {
-    background-color: var(--clr2);
+    background-color: rgba(219, 219, 219, 0.5);
 }

@@ -33,16 +33,44 @@ export function MailIndex() {
         setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
     }
 
-    function onRemoveMail(mailId) {
-        mailService.remove(mailId)
+    function onMarkAsRead(mail) {
+        mail.isRead = !mail.isRead
+        mailService.save(mail)
             .then(() => {
-                const updatedMails = mails.filter(mail => mail.id !== mailId)
+                loadMails()
+            })
+    }
+
+    function onRemoveMail(deletedMail) {
+        deletedMail.isTrash = true
+        mailService.save(deletedMail)
+            .then(() => {
+                const updatedMails = mails.filter(mail => mail.id !== deletedMail.id)
                 setMails(updatedMails)
             })
         setIsCompose(false)
     }
 
+    function onArchiveMail(archivedMail) {
+        archivedMail.isArchived = true
+        mailService.save(archivedMail)
+            .then(() => {
+                const updatedMails = mails.filter(mail => mail.id !== archivedMail.id)
+                setMails(updatedMails)
+            })
+    }
+
     function onSendMail(mail) {
+        mail.isRead = true
+        mail.isDraft = false
+        mailService.save(mail).then(() => {
+            loadMails()
+            setIsCompose(false)
+        })
+    }
+
+    function onSaveDraft(mail) {
+        mail.isDraft = true
         mailService.save(mail).then(() => {
             loadMails()
             setIsCompose(false)
@@ -83,8 +111,8 @@ export function MailIndex() {
             <MailSideBar setIsCompose={setIsCompose} onSideBarFilter={onSideBarFilter} />
             <section className="main-mail">
                 <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} onSetSortBy={onSetSortBy} />
-                <MailList mails={mails} onRemoveMail={onRemoveMail} onStarred={onStarred} onLabeled={onLabeled} />
-                {isCompose && <ComposeMail onRemoveMail={onRemoveMail} onSendMail={onSendMail} onCloseCompose={onCloseCompose} />}
+                <MailList mails={mails} onRemoveMail={onRemoveMail} onStarred={onStarred} onLabeled={onLabeled} onArchiveMail={onArchiveMail} onMarkAsRead={onMarkAsRead} />
+                {isCompose && <ComposeMail onSaveDraft={onSaveDraft} onSendMail={onSendMail} onCloseCompose={onCloseCompose} />}
             </section>
         </main>)
 }

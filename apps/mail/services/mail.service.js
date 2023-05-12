@@ -21,12 +21,28 @@ function query(filterBy = {}) {
 
     return storageService.query(MAIL_KEY)
         .then(mails => {
+
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regExp.test(mail.from) || regExp.test(mail.subject) || regExp.test(mail.massage))
             }
-            else if (filterBy.attribute) {
-                mails = mails.filter(mail => mail[filterBy.attribute] === true || mail[filterBy.attribute] === 'myEmail')
+
+            if (filterBy.attribute) {
+                if (filterBy.attribute === 'isTrash' || filterBy.attribute === 'isArchived') {
+                    mails = mails.filter(mail => mail[filterBy.attribute] === true)
+                    return mails
+                }
+                else if (filterBy.attribute === 'mailTo' || filterBy.attribute === 'from') {
+                    mails = mails.filter(mail => !mail.isTrash && !mail.isArchived && !mail.isDraft
+                        && mail[filterBy.attribute] === 'myEmail')
+                    return mails
+                } else {
+                    mails = mails.filter(mail => !mail.isTrash && !mail.isArchived
+                        && mail[filterBy.attribute] === true)
+                    return mails
+
+                }
+
             }
             return mails
         })
@@ -49,14 +65,17 @@ function save(mail) {
     }
 }
 
-function getNextMailId(mailId) {
+function getNextMailId(mailId, val) {
     return storageService.query(MAIL_KEY)
         .then((mails) => {
             let mailIdx = mails.findIndex(mail => mail.id === mailId)
-            if (mailIdx === mails.length - 1) mailIdx = -1
-            return mails[mailIdx + 1].id
+            if (mailIdx + val < 0) mailIdx = mails.length
+            if (mailIdx + val === mails.length) mailIdx = -1
+            return mails[mailIdx + val].id
         })
 }
+
+
 
 function getEmptyMail(from) {
     return {
@@ -72,13 +91,15 @@ function getEmptyMail(from) {
         isRead: false,
         isStarred: false,
         isImportant: false,
-        isArchived: false
+        isArchived: false,
+        isTrash: false
     }
 }
 
 function getDefaultFilter(searchParams = { get: () => { } }) {
     return {
-        txt: searchParams.get('txt') || ''
+        txt: searchParams.get('txt') || '',
+        attribute: 'mailTo'
     }
 }
 
@@ -97,7 +118,7 @@ function sortMails(mails, sortBy) {
 function countUnRead(mails) {
     let count = 0
     mails.map(mail => {
-        if (!mail.isRead) count++
+        if (!mail.isRead && !mail.isTrash && !mail.isArchived && !mail.isDraft) count++
     })
     return count
 }
@@ -132,7 +153,8 @@ function _createDemoMail(from, mailTo, subject, massage, date, dateToSort) {
         isRead: false,
         isStarred: false,
         isImportant: false,
-        isArchived: false
+        isArchived: false,
+        isTrash: false
     }
 
     return mail
