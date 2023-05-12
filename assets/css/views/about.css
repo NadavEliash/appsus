@@ -1,0 +1,20 @@
+.about {
+    font-family: source;
+    text-align: center;
+}
+
+.about h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.about-us-card {
+    width: 40rem;
+}
+
+.about-us-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: space-around;
+}

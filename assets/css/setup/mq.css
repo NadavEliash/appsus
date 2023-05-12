@@ -20,7 +20,7 @@
     
     .side-bar {
         position: absolute;
-        left: -500px;
+        left: -600px;
         transition: 1s;
         background-color: var(--clr3);
         z-index: 10;
@@ -51,13 +51,17 @@
 
     .search-box {
         min-width: none;
-        width: 88%;
+        width: 80%;
         margin-block: 0.5rem;
         margin-left: auto;
     }
 
     .search-box button {
         width: fit-content;
+    }
+
+    .search-box input {
+        width: 10rem;
     }
 
     .mail-row {

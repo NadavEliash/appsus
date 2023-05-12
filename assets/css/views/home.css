@@ -1,1 +1,31 @@
- /* home */
+.home {
+    font-family: source;
+}
+
+.home h1 {
+    position: absolute;
+    left: 30%;
+    translate: -20%;
+    top: 10%;
+    font-size: 6rem;
+    font-family: source;
+    letter-spacing: 5px;
+    font-weight: bold;
+    opacity: 1;
+}
+
+.home h2 {
+    position: absolute;
+    bottom: 4rem;
+    left: 15rem;
+    font-size: 3rem;
+    rotate: -1deg;
+    opacity: 0.5;
+}
+
+.home img {
+    position: absolute;
+    top: 0;
+    opacity: 0.4;
+    z-index: -10;
+}
