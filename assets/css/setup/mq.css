@@ -1,0 +1,103 @@
+/* mail */
+
+@media (max-width: 880px) {
+    .hamburger {
+        position: absolute;
+        left: 0;
+        top: 4.5rem;
+        display: block;
+        width: 4rem;
+        height: 3.5rem;
+        align-self: center;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .hamburger.true {
+        opacity: 0;
+        transition: 1s;
+    }
+    
+    .side-bar {
+        position: absolute;
+        left: -500px;
+        transition: 1s;
+        background-color: var(--clr3);
+        z-index: 10;
+        width: 70%;
+        height: 100%;
+    }
+
+    .side-bar img {
+        display: block;
+    }
+
+    .side-bar.true {
+        left: 0;
+        transition: 1s;
+    }
+
+    .mail-main-layout {
+        margin: 0;
+    }
+
+    .main-mail {
+        width: 100%;
+    }
+
+    .sort-mail {
+        display: none;
+    }
+
+    .search-box {
+        min-width: none;
+        width: 88%;
+        margin-block: 0.5rem;
+        margin-left: auto;
+    }
+
+    .search-box button {
+        width: fit-content;
+    }
+
+    .mail-row {
+        height: 4rem;
+    }
+
+    .mail-row h2.from {
+        width: 7rem;
+        font-size: 1.2rem;
+        overflow: hidden;
+    }
+
+    .mail-details-main {
+        display: block;
+        margin: 0;
+    }
+
+    .mail-details {
+        width: 100%;
+    }
+    
+    .browsing-mails {
+        position: absolute;
+        top: 50%;
+    }
+
+    .browsing-mails img {
+        height: 4rem;
+    }
+
+    .browsing-mails:last-child {
+        right: 0;
+    }
+
+    .mail-details h2 {
+        font-size: 1.5rem;
+    }
+
+    .mail-details p {
+        font-size: 1rem;
+    }
+
+}

@@ -59,7 +59,10 @@ export function MailDetails() {
                     </button>
                 </header>
                 <h2>{mail.subject}</h2>
+                <div className="from-and-date">
                 <h3>{mail.from}</h3>
+                <h4>{mail.date}</h4>
+                </div>
                 <p>{mail.massage}</p>
                 {/* <button className="reply-btn"><span className="reply-arrow">↪</span>Reply</button> */}
             </section>

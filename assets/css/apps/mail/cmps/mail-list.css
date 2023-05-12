@@ -1,3 +1,10 @@
+.no-mails-msg {
+    position: absolute;
+    font-size: 2rem;
+    color: rgb(92, 92, 92);
+    z-index: -10;
+}
+
 .mail-list {
     display: flex;
     flex-direction: column;
@@ -20,6 +27,7 @@ ul.mail-list {
 .mail-list li,
 .mail-list a {
     min-width: 0;
+    margin-right: 1rem;
 }
 
 .mail-list .markAsRead-button {
@@ -48,7 +56,14 @@ ul.mail-list {
 .mail-row:hover .delete-button,
 .mail-row:hover .archive-button {
     opacity: 1;
+    transition: 0.5s;
     cursor: pointer;
+}
+
+.mail-row:hover.true  .markAsRead-button,
+.mail-row:hover.true  .delete-button,
+.mail-row:hover.true .archive-button {
+    background-color: var(--clr4);
 }
 
 .mail-mark-buttons {

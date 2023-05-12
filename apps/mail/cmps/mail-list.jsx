@@ -16,6 +16,7 @@ export function MailList({ mails, onStarred, onLabeled, onMarkAsRead, onRemoveMa
 
     return (
         <ul className="mail-list">
+            <h1 className="no-mails-msg">Sorry.. there aren't emails matches your search</h1>
             {mails.map(mail =>
                 <li className={`mail-row ${mail.isRead}`} key={mail.id}>
                     <div className="mail-mark-buttons">

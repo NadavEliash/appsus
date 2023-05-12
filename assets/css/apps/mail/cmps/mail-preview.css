@@ -1,5 +1,5 @@
 .mail-row {
-    background-color: rgba(250, 250, 250, 0.3);
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -53,6 +53,18 @@
     width: 12rem;
 }
 
+
 .mail-title .date {
-    margin-left: auto;
+    background-color: white;
+    padding: 0.3rem;
+    position: absolute;
+    right: 2px;
+}
+
+.mail-row.true .date {
+    background-color: var(--clr4);
+}
+
+p.msg {
+    max-width: 30rem;
 }

@@ -7,6 +7,15 @@
     caret-color: transparent;
 }
 
+.side-bar img {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 2rem;
+    width: 2rem;
+    display: none;
+}
+
 .side-ul {
     padding: 0;
 }
@@ -39,4 +48,8 @@
 
 .side-ul li:hover {
     background-color: rgba(219, 219, 219, 0.5);
+}
+
+.hamburger {
+    display: none;
 }

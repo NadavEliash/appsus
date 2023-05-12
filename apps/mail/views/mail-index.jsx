@@ -42,12 +42,20 @@ export function MailIndex() {
     }
 
     function onRemoveMail(deletedMail) {
-        deletedMail.isTrash = true
-        mailService.save(deletedMail)
-            .then(() => {
-                const updatedMails = mails.filter(mail => mail.id !== deletedMail.id)
-                setMails(updatedMails)
-            })
+        if (deletedMail.isTrash) {
+            mailService.remove(deletedMail.id)
+                .then(() => {
+                    const updatedMails = mails.filter(mail => mail.id !== deletedMail.id)
+                    setMails(updatedMails)
+                })
+        } else {
+            deletedMail.isTrash = true
+            mailService.save(deletedMail)
+                .then(() => {
+                    const updatedMails = mails.filter(mail => mail.id !== deletedMail.id)
+                    setMails(updatedMails)
+                })
+        }
         setIsCompose(false)
     }
 
@@ -101,7 +109,7 @@ export function MailIndex() {
     }
 
     function onSetSortBy(sort) {
-        const sortedMails = mailService.sortMails(mails, sort)
+        mailService.sortMails(mails, sort)
         setSortBy(sort)
     }
 

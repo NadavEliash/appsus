@@ -31,8 +31,8 @@ export function MailFilter({ filterBy, onSetFilter, onSetSortBy }) {
                 <input value={txt} onChange={handleChange} name="txt" id="txt" type="text" placeholder="search emails" />
                 <button onClick={cancelSearch}><img src="assets/img/X.svg" alt="" /></button>
             </form>
-            <button onClick={() => onSetSortBy('date')}>by Date</button>
-            <button onClick={() => onSetSortBy('subject')}>by Subject</button>
+            <button className="sort-mail" onClick={() => onSetSortBy('date')}>Sort by Date</button>
+            <button className="sort-mail" onClick={() => onSetSortBy('subject')}>Sort by Subject</button>
         </section>
     )
 }
