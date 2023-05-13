@@ -15,10 +15,17 @@ p{
 
 .edit-buttons{
     display: flex;
+    /* visibility: hidden; */
     justify-content: center;
     position: absolute;
     bottom: 0;
     left:10%;
+}
+
+.edit-buttons:hover{
+    /* display:flex; */
+    cursor: pointer;
+    /* visibility: visible; */
 }
 
 .edit-buttons button {
