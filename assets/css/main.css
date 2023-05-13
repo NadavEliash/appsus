@@ -37,4 +37,6 @@
 @import '../css/apps/note/cmps/note-preview.css';
 @import '../css/apps/note/cmps/note-edit.css';
 @import '../css/apps/note/cmps/note-filter.css';
+@import '../css/apps/note/cmps/note-image.css';
+@import '../css/apps/note/cmps/note-todo.css';
 @import './setup/mq.css';

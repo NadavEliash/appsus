@@ -61,16 +61,35 @@ export function NoteIndex() {
         noteService.save(note).then(() => {
             setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
         })
-
-
     }
+
+    function onChangeToNoteImg(ev) {
+        ev.preventDefault()
+        setNoteToEdit(prevNote => (
+            { ...prevNote, type: 'NoteImg' }))
+    }
+
+    function onChangeToNoteTxt(ev) {
+        ev.preventDefault()
+        setNoteToEdit(prevNote => (
+            { ...prevNote, type: 'NoteTxt' }))
+    }
+
+    function onChangeToNoteVideo(ev) {
+        ev.preventDefault()
+        setNoteToEdit(prevNote => (
+            { ...prevNote, type: 'NoteVideo' }))
+    }
+
+
 
 
     function onSetFilter(filterBy) {
         setFilterBy(prevFilterBy => ({ ...prevFilterBy, ...filterBy }))
     }
 
-    const { info: { title, txt } } = noteToEdit
+
+    const { type, info: { title, txt, url } } = noteToEdit
     return (
         <section>
             <NoteFilter onSetFilter={onSetFilter} filterBy={filterBy} />
@@ -80,8 +99,29 @@ export function NoteIndex() {
                 <input required onChange={handleChange} value={title} type="text" name="title" id="title" placeholder="Title:" />
 
 
-                <label htmlFor="txt"></label>
-                <input required onChange={handleChange} value={txt} type="text" name="txt" id="txt" placeholder="Text here:" />
+                {type === 'NoteTxt' && <div>
+                    <label htmlFor="txt"></label>
+                    <input required onChange={handleChange} value={txt} type="text" name="txt" id="txt" placeholder="Text here:" />
+                </div>
+                }
+                {type === 'NoteImg' && <div>
+                    <label htmlFor="txt"></label>
+                    <input required onChange={handleChange} value={url} type="url" name="url" id="url" placeholder="Url here:" />
+                </div>
+
+                }
+                {type === 'NoteVideo' && <div>
+                    <label htmlFor="txt"></label>
+                    <input required onChange={handleChange} value={url} type="url" name="url" id="url" placeholder="Url here:" />
+                </div>
+
+                }
+
+                <div className="note-type-buttons">
+                    <button onClick={onChangeToNoteTxt}>🅰️</button>
+                    <button onClick={onChangeToNoteImg}>🖼️</button>
+                    <button onClick={onChangeToNoteVideo}>▶️</button>
+                </div>
 
                 <button>Add Note</button>
 

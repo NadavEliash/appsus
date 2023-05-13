@@ -103,7 +103,7 @@ function _createNotes() {
         type: 'NoteImg',
         isPinned: false,
         info: {
-          url: 'http://some-img/me',
+          url: 'https://picsum.photos/id/237/200/300',
           title: 'Bobi and Me'
         },
         style: {
@@ -113,12 +113,12 @@ function _createNotes() {
       {
         id: 'n103',
         type: 'NoteTodos',
-        isPinned: false,
+        isPinned: true,
         info: {
           title: 'Get my stuff together',
           todos: [
-            { txt: 'Driving license', doneAt: null },
-            { txt: 'Coding power', doneAt: 187111111 }]
+            { txt: 'Driving license', doneAt: null, done: false },
+            { txt: 'Coding power', doneAt: 187111111, done: false }]
         },
         style: {
           backgroundColor: '#B4FF9F'
@@ -126,11 +126,11 @@ function _createNotes() {
       },
       {
         id: 'n104',
-        type: 'NoteTxt',
+        type: 'NoteVideo',
         isPinned: false,
         info: {
-          title: 'To Remember',
-          txt: 'First of all - I am the best!First of all - I am the best!First of all - I am the best!First of all - I am the best!'
+          title: 'My best video',
+          url: 'https://www.youtube.com/embed/tgbNymZ7vqY',
         },
         style: {
           backgroundColor: '#F9FFA4'
@@ -151,7 +151,7 @@ function _createNotes() {
       {
         id: 'n106',
         type: 'NoteTxt',
-        isPinned: false,
+        isPinned: true,
         info: {
           title: 'My goal is:',
           txt: 'To finish NOTE APP!'
@@ -211,7 +211,7 @@ function _createNotes() {
       {
         id: 'n111',
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         info: {
           title: 'Last try',
           txt: 'Lets see how it works'
