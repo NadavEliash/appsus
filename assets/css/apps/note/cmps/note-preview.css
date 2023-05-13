@@ -21,9 +21,9 @@ p{
     display: flex;
     /* visibility: hidden; */
     justify-content: center;
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
-    left:5%;
+    left:5%; */
 }
 
 .edit-buttons:hover{
@@ -45,4 +45,9 @@ p{
 
 .edit-buttons img{
     width: 1.5em;
+}
+
+
+.ul-todo{
+    margin-bottom: 5px;
 }

@@ -101,18 +101,18 @@ export function NoteIndex() {
 
                 {type === 'NoteTxt' && <div>
                     <label htmlFor="txt"></label>
-                    <input required onChange={handleChange} value={txt} type="text" name="txt" id="txt" placeholder="Text here:" />
+                    <input required onChange={handleChange} value={txt} type="text" size="50" name="txt" id="txt" placeholder="Text here:" />
                 </div>
                 }
                 {type === 'NoteImg' && <div>
                     <label htmlFor="txt"></label>
-                    <input required onChange={handleChange} value={url} type="url" name="url" id="url" placeholder="Url here:" />
+                    <input required onChange={handleChange} value={url} type="url" size="50" name="url" id="url" placeholder="Url here:" />
                 </div>
 
                 }
                 {type === 'NoteVideo' && <div>
                     <label htmlFor="txt"></label>
-                    <input required onChange={handleChange} value={url} type="url" name="url" id="url" placeholder="Url here:" />
+                    <input required onChange={handleChange} value={url} type="url" size="50" name="url" id="url" placeholder="Url here:" />
                 </div>
 
                 }

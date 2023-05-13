@@ -23,7 +23,7 @@ export function NoteTodo({ note, loadNotes }) {
         <section>
             <h3>{note.info.title} </h3>
             <br />
-            <ul>
+            <ul className="ul-todo">
                 {note.info.todos.map(todo =>
                 <li key={todo.txt} className={`todo ${todo.done}`} onClick={()=> onChecked(todo)}>
                     {todo.txt}

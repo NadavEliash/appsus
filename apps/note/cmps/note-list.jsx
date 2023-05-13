@@ -9,7 +9,7 @@ export function NoteList({ notes, onRemoveNote, loadNotes, onPin, onDuplicate })
     return (
         <ul className="note-list">
             {notes.map(note =>
-                <li key={note.id}>
+                <li key={note.id} className="note-list-li">
                     <NotePreview note={note} onRemoveNote={onRemoveNote} loadNotes={loadNotes} onPin={onPin} onDuplicate={onDuplicate} />
                 </li>
             )}
