@@ -1,6 +1,31 @@
 /* mail */
 
 @media (max-width: 880px) {
+    .link img {
+        display: none;
+    }
+
+    .home h1 {
+        left: 1rem;
+        font-size: 3rem;
+    }
+
+    .home h2 {
+        font-size: 2rem;
+        text-align: start;
+        left: 1rem;
+    }
+
+    nav a {
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 1rem;
+    }
+
+    .app-header img {
+        display: none;
+    }
+
     .hamburger {
         position: absolute;
         left: 0;
@@ -17,7 +42,7 @@
         opacity: 0;
         transition: 1s;
     }
-    
+
     .side-bar {
         position: absolute;
         left: -600px;
@@ -82,7 +107,7 @@
     .mail-details {
         width: 100%;
     }
-    
+
     .browsing-mails {
         position: absolute;
         top: 50%;

@@ -16,7 +16,10 @@ header {
 }
 
 nav a {
-    margin: 1rem;
+    margin: 0.4rem;
+    padding-inline: 2rem;
+    padding-block: 0.6rem;
+    border-radius: 2rem;
 }
 
 nav a:active {
@@ -26,4 +29,11 @@ nav a:active {
 nav a.active {
     color: darkblue;
     font-weight: bold;
+    background-color: rgba(253, 222, 182, 0.2);
+}
+
+nav a:hover {
+    background-color: rgba(197, 218, 255, 0.2);
+    scale: 1.1;
+    transition: 0.5s;
 }
