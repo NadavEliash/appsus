@@ -1,8 +1,11 @@
 .user-msg {
-    background-color: lightgray;
-    padding: 1em;
+    background-color: rgb(240, 232, 232);
+    padding: 1rem;
+    border-radius: 1rem;
     position: absolute;
-    top: 1em;
+    font-size: 1.5rem;
+    font-family: source;
+    bottom: 1em;
     right: 1em;
 }
 

@@ -69,14 +69,23 @@ ul.mail-list {
 .mail-mark-buttons {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: space-around;
     width: 4rem;
+}
+
+.star-button:active,
+.label-button:active {
+    scale: 1.1;
 }
 
 .star-button .empty-star.false,
 .label-button .empty-label.false {
 
+    width: 1.3rem;
+}
+
+.label-button .empty-label.false{
     width: 1.1rem;
 }
 

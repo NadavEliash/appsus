@@ -6,7 +6,7 @@ import { MailSideBar } from "../cmps/mail-side-bar.jsx"
 import { MailFilter } from "../cmps/mail-filter.jsx"
 import { MailList } from "../cmps/mail-list.jsx"
 import { ComposeMail } from "../cmps/compose-mail.jsx"
-import { utilService } from "../../../services/util.service.js"
+import { showUserMsg } from "../../../services/event-bus.service.js"
 
 
 
@@ -17,12 +17,12 @@ export function MailIndex() {
     const [sortBy, setSortBy] = useState([])
     const [isCompose, setIsCompose] = useState(false)
     const [mails, setMails] = useState([])
-
+    const [isRead, setIsRead] = useState(false)
 
     useEffect(() => {
         loadMails()
         setSearchParams(filterBy)
-    }, [filterBy])
+    }, [filterBy, isRead])
 
 
     function loadMails() {
@@ -38,22 +38,28 @@ export function MailIndex() {
         mailService.save(mail)
             .then(() => {
                 loadMails()
+                setIsRead(!isRead)
             })
     }
 
     function onRemoveMail(deletedMail) {
         if (deletedMail.isTrash) {
-            mailService.remove(deletedMail.id)
+            let confirmed = confirm('are you sure? the mail will delete permanently')
+            if (confirmed) {
+                mailService.remove(deletedMail.id)
                 .then(() => {
                     const updatedMails = mails.filter(mail => mail.id !== deletedMail.id)
                     setMails(updatedMails)
                 })
+            }
+            else { return }
         } else {
             deletedMail.isTrash = true
             mailService.save(deletedMail)
                 .then(() => {
                     const updatedMails = mails.filter(mail => mail.id !== deletedMail.id)
                     setMails(updatedMails)
+                    showUserMsg({ txt: 'Mail sent to trash' })
                 })
         }
         setIsCompose(false)
@@ -65,6 +71,7 @@ export function MailIndex() {
             .then(() => {
                 const updatedMails = mails.filter(mail => mail.id !== archivedMail.id)
                 setMails(updatedMails)
+                showUserMsg({ txt: 'Mail sent to archive' })
             })
     }
 
@@ -74,6 +81,7 @@ export function MailIndex() {
         mailService.save(mail).then(() => {
             loadMails()
             setIsCompose(false)
+            showUserMsg({ txt: 'Mail sent successfuly' })
         })
     }
 
@@ -82,6 +90,7 @@ export function MailIndex() {
         mailService.save(mail).then(() => {
             loadMails()
             setIsCompose(false)
+            showUserMsg({ txt: 'Draft saved' })
         })
     }
 
