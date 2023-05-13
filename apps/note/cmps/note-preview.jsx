@@ -109,7 +109,9 @@ export function NotePreview({ note, onRemoveNote, loadNotes, onPin, onDuplicate 
                     <option value="#FFD59E">Orange</option>
                     <option value="#FFA1A1">Red</option>
                 </select>
-                <button style={noteStyle} onClick={() => onRemoveNote(note.id)}>🗑</button>
+                <button style={noteStyle} onClick={() => onRemoveNote(note.id)}>
+                    <img src="assets/img/delete.svg" alt="" />
+                </button>
 
             </div>
             {/* {isEditable && <NoteEdit note={note} onEditable={onEditable} loadNotes={loadNotes} />} */}

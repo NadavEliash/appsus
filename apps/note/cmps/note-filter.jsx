@@ -26,7 +26,7 @@ export function NoteFilter({ filterBy, onSetFilter }) {
     return (
         <section className="note-filter">
 
-            <form className="search-box" onSubmit={onSubmitFilter}>
+            <form className="note-search-box" onSubmit={onSubmitFilter}>
                 <img src="assets/img/magnifying-glass.svg" alt="" />
                 <input value={txt} onChange={handleChange} type="text" name="txt" id="txt" placeholder="Search:" />
             </form>
