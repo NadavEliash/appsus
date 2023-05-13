@@ -5,7 +5,6 @@ const { useState, useEffect } = React
 export function NoteFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-    // console.log(filterBy)
 
     useEffect(() => {
         onSetFilter(filterByToEdit)
@@ -15,7 +14,6 @@ export function NoteFilter({ filterBy, onSetFilter }) {
         const field = target.name
         const value = target.value
         setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, info: { ...prevFilterBy.info, [field]: value } }))
-        // console.log(filterByToEdit)
     }
 
     function onSubmitFilter(ev) {
@@ -31,8 +29,6 @@ export function NoteFilter({ filterBy, onSetFilter }) {
             <form className="search-box" onSubmit={onSubmitFilter}>
                 <img src="assets/img/magnifying-glass.svg" alt="" />
                 <input value={txt} onChange={handleChange} type="text" name="txt" id="txt" placeholder="Search:" />
-
-                {/* <button>Filter Notes</button> */}
             </form>
 
         </section>
